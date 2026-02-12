@@ -171,7 +171,7 @@
             fill="#ff7aa2"/>
     </svg>
 
-    <h1>nirali will you be my valentine?</h1>
+    <h1 id="question">nirali will you be my valentine?</h1>
 
     <section class="button-zone" id="zone">
       <button id="yesBtn">Yes</button>
@@ -192,6 +192,17 @@
   </main>
 
   <script>
+    /* ---------- QUERY PARAMETER NAME ---------- */
+    const urlParams = new URLSearchParams(window.location.search);
+    const rawName = urlParams.get('name');
+    const trimmedName = rawName?.trim();
+    // Capitalize first letter of each word in the name
+    const recipientName = trimmedName 
+      ? trimmedName.split(' ').filter(word => word.length > 0).map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ')
+      : 'Nirali';
+    const questionElement = document.getElementById('question');
+    questionElement.textContent = `${recipientName} will you be my valentine?`;
+
     const zone = document.getElementById("zone");
     const yesBtn = document.getElementById("yesBtn");
     const noBtn = document.getElementById("noBtn");
