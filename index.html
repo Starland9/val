@@ -194,7 +194,8 @@
   <script>
     /* ---------- QUERY PARAMETER NAME ---------- */
     const urlParams = new URLSearchParams(window.location.search);
-    const recipientName = urlParams.get('name') || 'nirali';
+    const rawName = urlParams.get('name') || 'nirali';
+    const recipientName = rawName.charAt(0).toUpperCase() + rawName.slice(1);
     const questionElement = document.getElementById('question');
     questionElement.textContent = `${recipientName} will you be my valentine?`;
 
