@@ -194,8 +194,11 @@
   <script>
     /* ---------- QUERY PARAMETER NAME ---------- */
     const urlParams = new URLSearchParams(window.location.search);
-    const rawName = urlParams.get('name') || 'nirali';
-    const recipientName = rawName.charAt(0).toUpperCase() + rawName.slice(1);
+    const rawName = urlParams.get('name');
+    // Capitalize first letter of each word in the name
+    const recipientName = (rawName && rawName.trim()) 
+      ? rawName.trim().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ')
+      : 'Nirali';
     const questionElement = document.getElementById('question');
     questionElement.textContent = `${recipientName} will you be my valentine?`;
 
